@@ -225,7 +225,7 @@
         
         <div class="info-box">
           <p class="font-medium">Shorten long URLs into easy-to-share links</p>
-          <p class="text-sm text-gray-600 mt-1">Short URLs expire after 24 hours. Track clicks and generate QR codes.</p>
+          <p class="text-sm text-gray-600 mt-1">Short URLs expire after 96 hours. Track clicks and generate QR codes.</p>
         </div>
 
         <!-- URL Shortener Form -->
@@ -296,7 +296,7 @@
         
         <div class="info-box">
           <p class="font-medium">Share files, links, or text securely with a secret code</p>
-          <p class="text-sm text-gray-600 mt-1">Content is stored for 24 hours and accessible only with the secret code</p>
+          <p class="text-sm text-gray-600 mt-1">Content is stored for 96 hours and accessible only with the secret code</p>
         </div>
 
         <!-- Share Type Selector -->
@@ -417,7 +417,7 @@
         
         <div class="info-box">
           <p class="font-medium">Enter a secret code to retrieve shared content</p>
-          <p class="text-sm text-gray-600 mt-1">Content is automatically deleted after 24 hours for security</p>
+          <p class="text-sm text-gray-600 mt-1">Content is automatically deleted after 96 hours for security</p>
         </div>
 
         <form id="retrieve-form" onsubmit="retrieveContent(event)">
@@ -490,7 +490,7 @@
               <li><i class="fas fa-check text-green-500 mr-2"></i>Share links, files, or text securely</li>
               <li><i class="fas fa-check text-green-500 mr-2"></i>Generate unique secret codes</li>
               <li><i class="fas fa-check text-green-500 mr-2"></i>Optional password protection</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Auto-expire after 24 hours</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Auto-expire after 96 hours</li>
             </ul>
           </div>
           
@@ -509,7 +509,7 @@
         
         <div class="mt-8 text-center">
           <p class="text-gray-600">Built with Flask • Secure by design • All-in-One Tool</p>
-          <p class="text-sm text-gray-500 mt-2">All shared content and shortened URLs are automatically deleted after 24 hours</p>
+          <p class="text-sm text-gray-500 mt-2">All shared content and shortened URLs are automatically deleted after 96 hours</p>
         </div>
       </div>
     </div>
@@ -518,7 +518,7 @@
     <footer class="text-center mt-12 pt-8 border-t border-gray-300">
       <p class="text-gray-600">Secure Share Portal v3.0 • Made with ❤️ for secure sharing</p>
       <p class="text-sm text-gray-500 mt-2">
-        <i class="fas fa-clock mr-1"></i>Content expires after 24 hours • 
+        <i class="fas fa-clock mr-1"></i>Content expires after 96 hours •
         <i class="fas fa-shield-alt mx-1"></i>Secure transfers • 
         <i class="fas fa-link mx-1"></i>URL Shortener • 
         <i class="fas fa-code mx-1"></i>No registration required
@@ -530,7 +530,7 @@
           <p class="text-gray-500 text-sm">Powered by</p>
           <div class="flex items-center gap-1">
             <img src="/static/eventflow-logo.png" alt="EventFlow" class="h-6">
-            <span class="font-bold text-blue-600"><a href="https://overpotent-bianca-foamy.ngrok-free.dev">EventFlow</a></span>
+            <span class="font-bold text-blue-600">EventFlow</span>
           </div>
         </div>
         <p class="text-xs text-gray-400 mt-1">Streamline your events with smart solutions</p>
@@ -620,7 +620,7 @@
             </div>
             
             <div class="mt-4 text-sm text-gray-600">
-              <p><i class="fas fa-clock mr-2"></i>Expires in 24 hours</p>
+              <p><i class="fas fa-clock mr-2"></i>Expires in 96 hours</p>
               <p><i class="fas fa-mouse-pointer mr-2"></i>0 clicks so far</p>
             </div>
             
@@ -799,7 +799,7 @@
             </div>
             
             <div class="mt-4 text-sm text-gray-600">
-              <p><i class="fas fa-clock mr-2"></i>Expires in 24 hours</p>
+              <p><i class="fas fa-clock mr-2"></i>Expires in 96 hours</p>
               <p><i class="fas fa-key mr-2"></i>${password ? 'Password protected' : 'No password required'}</p>
             </div>
             
@@ -911,7 +911,7 @@
             </div>
             
             <div class="mt-4 text-sm text-gray-600">
-              <p><i class="fas fa-clock mr-2"></i>Expires in 24 hours</p>
+              <p><i class="fas fa-clock mr-2"></i>Expires in 96 hours</p>
               <p><i class="fas fa-key mr-2"></i>${password ? 'Password protected' : 'No password required'}</p>
             </div>
           </div>
@@ -975,7 +975,7 @@
             </div>
             
             <div class="mt-4 text-sm text-gray-600">
-              <p><i class="fas fa-clock mr-2"></i>Expires in 24 hours</p>
+              <p><i class="fas fa-clock mr-2"></i>Expires in 96 hours</p>
               <p><i class="fas fa-key mr-2"></i>${password ? 'Password protected' : 'No password required'}</p>
             </div>
           </div>
@@ -1150,7 +1150,7 @@ async function downloadFile(code) {
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } else if (response.status === 404) {
-      alert('File not found or has expired (24-hour limit)');
+      alert('File not found or has expired (96-hour limit)');
     } else {
       alert(`Error downloading file: ${response.status} ${response.statusText}`);
     }

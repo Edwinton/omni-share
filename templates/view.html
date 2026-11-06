@@ -45,7 +45,7 @@
         <a href="/" class="text-blue-600 hover:underline">OmniShare</a>
       </p>
       <p class="text-sm text-gray-500 mt-2">
-        <i class="fas fa-clock mr-1"></i>Content expires after 24 hours
+        <i class="fas fa-clock mr-1"></i>Content expires after 96 hours
       </p>
       
       <!-- Powered by EventFlow -->
@@ -179,7 +179,7 @@
               
               <div class="mt-6 text-sm text-gray-600">
                 <p><i class="fas fa-clock mr-2"></i>Expires: ${expires}</p>
-                <p><i class="fas fa-shield-alt mr-2"></i>This file will be automatically deleted after 24 hours</p>
+                <p><i class="fas fa-shield-alt mr-2"></i>This file will be automatically deleted after 96 hours</p>
               </div>
             </div>
           `;
@@ -373,7 +373,7 @@
           window.URL.revokeObjectURL(url);
           document.body.removeChild(a);
         } else if (response.status === 404) {
-          alert('File not found or has expired (24-hour limit)');
+          alert('File not found or has expired (96-hour limit)');
         } else {
           alert(`Error downloading file: ${response.status} ${response.statusText}`);
         }
