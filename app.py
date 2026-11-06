@@ -18,6 +18,15 @@ import mimetypes
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", secrets.token_hex(32))
+PUBLIC_BASE_URL = os.environ.get("PUBLIC_BASE_URL", "").strip().rstrip("/")
+
+def get_public_base_url():
+    """Return the canonical public URL, falling back to the current request host."""
+    return PUBLIC_BASE_URL or request.host_url.rstrip("/")
+
+@app.context_processor
+def inject_public_base_url():
+    return {"public_base_url": get_public_base_url()}
 
 # Configuration
 MAX_STORAGE_DURATION = 96 * 3600  # 96 hours (4 days)
@@ -375,7 +384,7 @@ def handle_large_file_for_qr(file, data, logo_size, add_bg):
         }
         
         # Create download URL
-        download_url = f"{request.host_url}download/{share_code}"
+        download_url = f"{get_public_base_url()}/download/{share_code}"
         
         # Handle logo upload
         logo_data = None
@@ -485,8 +494,7 @@ def shorten_url():
             'visits': 0
         }
         
-        # Use request.host_url which should work on Render
-        short_url = f"{request.host_url}{short_code}"
+        short_url = f"{get_public_base_url()}/{short_code}"
         
         response = jsonify({
             "success": True, 
@@ -547,7 +555,7 @@ def get_short_url_stats():
             "visits": item['visits'],
             "created_at": int(item['timestamp']),
             "expires_at": expires_at,
-            "short_url": f"{request.host_url}{short_code}"
+            "short_url": f"{get_public_base_url()}/{short_code}"
         })
         
         response.headers.add("Access-Control-Allow-Origin", "*")

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Favicon -->
   <link rel="icon" type="image/png" href="/static/icon.png">
+  <script>window.OMNISHARE_PUBLIC_BASE_URL = {{ public_base_url|tojson }};</script>
   <style>
     #qr-result, #share-result, #shorten-result { max-width: 300px; margin: 1rem auto; }
     .dropzone { border: 2px dashed #cbd5e0; border-radius: 8px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s; }
@@ -777,7 +778,7 @@
       const result = await response.json();
       
       if (result.success) {
-        const shareUrl = window.location.origin + '/view?code=' + result.code;
+        const shareUrl = window.OMNISHARE_PUBLIC_BASE_URL + '/view?code=' + result.code;
         shareResult.innerHTML = `
           <div class="bg-green-50 p-4 rounded-lg">
             <div class="secret-code text-center">
@@ -888,7 +889,7 @@
       const result = await response.json();
       
       if (result.success) {
-        const shareUrl = window.location.origin + '/view?code=' + result.code;
+        const shareUrl = window.OMNISHARE_PUBLIC_BASE_URL + '/view?code=' + result.code;
         shareResult.innerHTML = `
           <div class="bg-green-50 p-4 rounded-lg">
             <div class="secret-code text-center">
@@ -953,7 +954,7 @@
       const result = await response.json();
       
       if (result.success) {
-        const shareUrl = window.location.origin + '/view?code=' + result.code;
+        const shareUrl = window.OMNISHARE_PUBLIC_BASE_URL + '/view?code=' + result.code;
         shareResult.innerHTML = `
           <div class="bg-green-50 p-4 rounded-lg">
             <div class="secret-code text-center">

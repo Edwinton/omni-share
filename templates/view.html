@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>View Shared Content - OmniShare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>window.OMNISHARE_PUBLIC_BASE_URL = {{ public_base_url|tojson }};</script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -137,7 +138,7 @@
               <div class="mt-6 text-sm text-gray-600">
                 <p><i class="fas fa-clock mr-2"></i>Expires: ${expires}</p>
                 <p><i class="fas fa-share-alt mr-2"></i>Share this link with others: 
-                  <span class="font-mono bg-gray-100 px-2 py-1 rounded">${window.location.origin}/view?code=${code}</span>
+                  <span class="font-mono bg-gray-100 px-2 py-1 rounded">${window.OMNISHARE_PUBLIC_BASE_URL}/view?code=${code}</span>
                 </p>
               </div>
             </div>
@@ -350,7 +351,7 @@
     }
 
     function copyShareLink(code) {
-      const shareLink = `${window.location.origin}/view?code=${code}`;
+      const shareLink = `${window.OMNISHARE_PUBLIC_BASE_URL}/view?code=${code}`;
       copyToClipboard(shareLink);
     }
 
